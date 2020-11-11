@@ -240,6 +240,7 @@ export class Exchange extends React.Component<
                 exchange.setToken(TOKEN.BUSD)
                 // routing.push(`/${exchange.token}`)
               }}
+              direction="row"
             >
               <BusdSvg className={styles.imgToken} />
               {/*<img className={styles.imgToken} src='/busd.svg' />*/}
@@ -255,6 +256,7 @@ export class Exchange extends React.Component<
                 exchange.setToken(TOKEN.LINK)
                 // routing.push(`/${exchange.token}`)
               }}
+              direction="row"
             >
               <LinkSvg className={styles.imgToken} />
               {/*<img className={styles.imgToken} src='/link.png' />*/}
@@ -270,6 +272,7 @@ export class Exchange extends React.Component<
                 exchange.setToken(TOKEN.ERC20)
                 // routing.push(`/${exchange.token}`)
               }}
+              direction="row"
             >
               <EthSvg className={styles.imgToken} />
               {/*<img className={styles.imgToken} src='/eth.svg' />*/}
