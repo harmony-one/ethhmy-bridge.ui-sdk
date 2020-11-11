@@ -19,16 +19,19 @@ For Yarn users:
 
 ## Usage
 ```tsx
-  <ExchangeBlock network='testnet' addressMetamask={metamask} addressOneWallet={oneWallet} />
+import { ExchangeBlock } from 'bridge-ui-sdk'
+import 'bridge-ui-sdk/dist/index.css'
+
+<ExchangeBlock network='testnet' addressMetamask={metamask} addressOneWallet={oneWallet} />
 ```
 
 #### You need to do signIn to your wallets in other blocks. ExchangeBlock will use your wallets through window object.
 #### After you will do Sign In to Wallet (Metamask or OneWallet) your need to set next props to ExchangeBlock
 
 ### Params
-##### network: `'testnet' or 'mainnet'`
-##### addressMetamask: `your Metamask account address in hex` 
-##### addressOneWallet: `your OneWallet account address`
+##### network: 'testnet' or 'mainnet'
+##### addressMetamask: your Metamask account address in hex
+##### addressOneWallet: your OneWallet account address
 
 ## Full Example (with wallets sign in)
 
