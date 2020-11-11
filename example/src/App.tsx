@@ -6,6 +6,7 @@ import 'bridge-ui-sdk/dist/index.css'
 
 const App = () => {
   const [metamask, setMetamask] = useState<string>()
+  const [oneWallet, setOneWallet] = useState<string>()
 
   useEffect(() => {
     detectEthereumProvider().then((provider: any) => {
@@ -38,9 +39,27 @@ const App = () => {
     })
   }, [])
 
-  console.log(metamask)
+  useEffect(() => {
+    try {
+      // @ts-ignore
+      setTimeout(() => {
+        // @ts-ignore
+        window.onewallet
+          .getAccount()
+          .then(({ address }: any) => setOneWallet(address))
+      }, 3000)
+    } catch (e) {
+      console.error(e)
+    }
+  }, [])
 
-  return <ExchangeBlock network='testnet' addressMetamask={metamask} />
+  return (
+    <ExchangeBlock
+      network='testnet'
+      addressMetamask={metamask}
+      addressOneWallet={oneWallet}
+    />
+  )
 }
 
 export default App
