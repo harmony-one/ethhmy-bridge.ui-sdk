@@ -32,7 +32,7 @@ import 'bridge-ui-sdk/dist/index.css'
 ### Params
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| network | `'mainnet'` | `'testnet'` | `'testnet'` | Network type - instead of this type Exchange block will use different configs (smart contract address, validator address etc)
+| network | `'mainnet' | 'testnet'` | `'testnet'` | Network type - instead of this type Exchange block will use different configs (smart contract address, validator address etc)
 | addressMetamask | String |  | Your Ethereum address with wich you signed in
 | addressOneWallet | String |  | Your Harmony address with wich you signed in
 
