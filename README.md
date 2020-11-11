@@ -5,9 +5,16 @@
 [![NPM](https://img.shields.io/npm/v/bridge-ui-sdk.svg)](https://www.npmjs.com/package/bridge-ui-sdk) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
+For npm users:
 
-```bash
-npm install --save bridge-ui-sdk
+```shell
+  $ npm install bridge-ui-sdk styled-components --save
+```
+
+For Yarn users:
+
+```shell
+  $ yarn add bridge-ui-sdk styled-components
 ```
 
 ## Usage
