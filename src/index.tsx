@@ -61,7 +61,6 @@ export const ExchangeBlock = (props: IExchangeProps) => {
         <Grommet
           theme={{ ...Theme, ...baseTheme, ...props.theme }}
           plain={true}
-          full={true}
           id='grommetRoot'
         >
           <Exchange />

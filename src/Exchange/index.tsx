@@ -20,6 +20,11 @@ import { autorun, computed } from 'mobx'
 import { TOKEN, EXCHANGE_MODE } from '../stores/interfaces'
 import cn from 'classnames'
 import { ERC20Select } from './ERC20Select'
+import { LargeButton } from './LargeButton'
+
+import { ReactComponent as BusdSvg } from '../images/busd.svg'
+import { ReactComponent as LinkSvg } from '../images/link.svg'
+import { ReactComponent as EthSvg } from '../images/eth.svg'
 
 export interface ITokenInfo {
   label: string
@@ -204,6 +209,26 @@ export class Exchange extends React.Component<
 
     return (
       <Box direction='column' pad='xlarge' className={styles.exchangeContainer}>
+        <Box
+          direction="row"
+          justify="between"
+          width="560px"
+          margin={{ vertical: 'large' }}
+        >
+          <LargeButton
+            title="ETH -> ONE"
+            description="(Metamask)"
+            onClick={() => exchange.setMode(EXCHANGE_MODE.ETH_TO_ONE)}
+            isActive={exchange.mode === EXCHANGE_MODE.ETH_TO_ONE}
+          />
+          <LargeButton
+            title="ONE -> ETH"
+            reverse={true}
+            description="(ONE Wallet)"
+            onClick={() => exchange.setMode(EXCHANGE_MODE.ONE_TO_ETH)}
+            isActive={exchange.mode === EXCHANGE_MODE.ONE_TO_ETH}
+          />
+        </Box>
         {exchange.step.id === EXCHANGE_STEPS.BASE ? (
           <Box direction='row'>
             <Box
@@ -216,7 +241,8 @@ export class Exchange extends React.Component<
                 // routing.push(`/${exchange.token}`)
               }}
             >
-              <img className={styles.imgToken} src='/busd.svg' />
+              <BusdSvg className={styles.imgToken} />
+              {/*<img className={styles.imgToken} src='/busd.svg' />*/}
               <Text>BUSD</Text>
             </Box>
 
@@ -230,7 +256,8 @@ export class Exchange extends React.Component<
                 // routing.push(`/${exchange.token}`)
               }}
             >
-              <img className={styles.imgToken} src='/link.png' />
+              <LinkSvg className={styles.imgToken} />
+              {/*<img className={styles.imgToken} src='/link.png' />*/}
               <Text>LINK</Text>
             </Box>
 
@@ -244,7 +271,8 @@ export class Exchange extends React.Component<
                 // routing.push(`/${exchange.token}`)
               }}
             >
-              <img className={styles.imgToken} src='/eth.svg' />
+              <EthSvg className={styles.imgToken} />
+              {/*<img className={styles.imgToken} src='/eth.svg' />*/}
               <Text>ERC20</Text>
             </Box>
           </Box>
