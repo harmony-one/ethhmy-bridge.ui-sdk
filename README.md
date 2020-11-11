@@ -4,6 +4,8 @@
 
 [![NPM](https://img.shields.io/npm/v/bridge-ui-sdk.svg)](https://www.npmjs.com/package/bridge-ui-sdk) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+<img height="460" src="https://github.com/harmony-one/ethhmy-bridge.ui-sdk/blob/main/bridge_widget.jpeg?raw=true">
+
 ## Install
 For npm users:
 
