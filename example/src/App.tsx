@@ -54,11 +54,27 @@ const App = () => {
   }, [])
 
   return (
-    <ExchangeBlock
-      network='testnet'
-      addressMetamask={metamask}
-      addressOneWallet={oneWallet}
-    />
+    <div
+      style={{
+        background: '#dedede',
+        width: '100vw',
+        height: '100vh',
+        padding: '100px 0'
+      }}
+    >
+      <div
+        style={{
+          maxWidth: 600,
+          margin: '0 auto'
+        }}
+      >
+        <ExchangeBlock
+          network='testnet'
+          addressMetamask={metamask}
+          addressOneWallet={oneWallet}
+        />
+      </div>
+    </div>
   )
 }
 
