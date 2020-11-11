@@ -57,23 +57,23 @@ export class UserStoreEx extends StoreConstructor {
     // @ts-ignore
     this.onewallet = window.onewallet
 
-    const session = localStorage.getItem('harmony_session')
-
-    const sessionObj = JSON.parse(session)
-
-    if (sessionObj && sessionObj.isInfoReading) {
-      this.isInfoReading = sessionObj.isInfoReading
-    }
-
-    if (sessionObj && sessionObj.address) {
-      this.address = sessionObj.address
-      this.sessionType = sessionObj.sessionType
-      this.isAuthorized = true
-
-      this.stores.exchange.transaction.oneAddress = this.address
-
-      this.getOneBalance()
-    }
+    // const session = localStorage.getItem('harmony_session')
+    //
+    // const sessionObj = JSON.parse(session)
+    //
+    // if (sessionObj && sessionObj.isInfoReading) {
+    //   this.isInfoReading = sessionObj.isInfoReading
+    // }
+    //
+    // if (sessionObj && sessionObj.address) {
+    //   this.address = sessionObj.address
+    //   this.sessionType = sessionObj.sessionType
+    //   this.isAuthorized = true
+    //
+    //   this.stores.exchange.transaction.oneAddress = this.address
+    //
+    //   this.getOneBalance()
+    // }
   }
 
   setOneWalletAddress = (address: string) => {
