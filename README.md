@@ -87,6 +87,12 @@ const App = () => {
 export default App
 ```
 
+## Params
+##### network: `'testnet' or 'mainnet'`
+##### addressMetamask: `your Metamask account address in hex` 
+##### addressOneWallet: `your OneWallet account address`
+
+
 ## License
 
 MIT © [harmony](https://github.com/harmony)
