@@ -37,23 +37,31 @@ export const ExchangeBlock = (props: IExchangeProps) => {
 
   useEffect(() => {
     if (!sdkInit) return
+
     stores.user.setOneWalletAddress(props.addressOneWallet)
+
     try {
       stores.exchange.bridgeSdk.setUseOneWallet(!!props.addressOneWallet)
     } catch (e) {
       console.warn(e)
     }
-  }, [props.addressOneWallet, sdkInit])
 
-  useEffect(() => {
-    if (!sdkInit) return
-    stores.user.setMathWalletAddress(props.addressMathWallet)
-    try {
-      stores.exchange.bridgeSdk.setUseMathWallet(!!props.addressMathWallet)
-    } catch (e) {
-      console.warn(e)
+    if (!props.addressOneWallet) {
+      stores.user.setMathWalletAddress(props.addressMathWallet)
+
+      try {
+        stores.exchange.bridgeSdk.setUseMathWallet(!!props.addressMathWallet)
+      } catch (e) {
+        console.warn(e)
+      }
+    } else {
+      try {
+        stores.exchange.bridgeSdk.setUseMathWallet(false)
+      } catch (e) {
+        console.warn(e)
+      }
     }
-  }, [props.addressMathWallet, sdkInit])
+  }, [props.addressOneWallet, props.addressMathWallet, sdkInit])
 
   return (
     <StoresProvider stores={stores as any}>
