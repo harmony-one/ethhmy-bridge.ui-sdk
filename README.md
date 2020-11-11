@@ -30,9 +30,11 @@ import 'bridge-ui-sdk/dist/index.css'
 #### After wallet sign in (Metamask or OneWallet), your need to set next props to ExchangeBlock
 
 ### Params
-network: 'testnet' or 'mainnet'
-addressMetamask: your Metamask account address in hex
-addressOneWallet: your OneWallet account address
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| network | `'mainnet'` | `'testnet'` | `'testnet'` | Network type - instead of this type Exchange block will use different configs (smart contract address, validator address etc)
+| addressMetamask | String |  | Your Ethereum address with wich you signed in
+| addressOneWallet | String |  | Your Harmony address with wich you signed in
 
 ## Full Example (with wallets sign in)
 
