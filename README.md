@@ -4,6 +4,8 @@
 
 [![NPM](https://img.shields.io/npm/v/bridge-ui-sdk.svg)](https://www.npmjs.com/package/bridge-ui-sdk) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+<img height="460" src="https://github.com/harmony-one/ethhmy-bridge.ui-sdk/blob/main/bridge_widget.jpeg?raw=true">
+
 ## Install
 For npm users:
 
@@ -19,16 +21,22 @@ For Yarn users:
 
 ## Usage
 ```tsx
-  <ExchangeBlock network='testnet' addressMetamask={metamask} addressOneWallet={oneWallet} />
+import React from 'react'
+import { ExchangeBlock } from 'bridge-ui-sdk'
+import 'bridge-ui-sdk/dist/index.css'
+
+({ addressMetamask, addressOneWallet }) => <ExchangeBlock network='testnet' addressMetamask={addressMetamask} addressOneWallet={addressOneWallet} />
 ```
 
-#### You need to do signIn to your wallets in other blocks. ExchangeBlock will use your wallets through window object.
-#### After you will do Sign In to Wallet (Metamask or OneWallet) your need to set next props to ExchangeBlock
+#### You need to do sign nn with your wallets in other blocks. ExchangeBlock will use your wallets through window object.
+#### After wallet sign in (Metamask or OneWallet), your need to set next props to ExchangeBlock
 
 ### Params
-##### network: `'testnet' or 'mainnet'`
-##### addressMetamask: `your Metamask account address in hex` 
-##### addressOneWallet: `your OneWallet account address`
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| network | `'mainnet'` or `'testnet'` | `'testnet'` | Network type - instead of this type Exchange block will use different configs (smart contract address, validator address etc)
+| addressMetamask | String |  | Your Ethereum address with wich you signed in
+| addressOneWallet | String |  | Your Harmony address with wich you signed in
 
 ## Full Example (with wallets sign in)
 
