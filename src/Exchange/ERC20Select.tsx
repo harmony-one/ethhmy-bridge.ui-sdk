@@ -1,34 +1,33 @@
-import * as React from 'react';
-import { Box } from 'grommet';
-import { observer } from 'mobx-react-lite';
-import { useStores } from '../stores';
-import { Button, TextInput, Text, Select, Checkbox } from '../components/Base';
-import { useEffect, useState } from 'react';
-import { tokens } from './tokens';
-import styles from './styles.styl';
-import { truncateAddressString } from '../utils';
+import * as React from 'react'
+import { Box } from 'grommet'
+import { observer } from 'mobx-react-lite'
+import { useStores } from '../stores'
+import { Button, TextInput, Text, Select, Checkbox } from '../components/Base'
+import { useEffect, useState } from 'react'
+import styles from './styles.styl'
+import { truncateAddressString } from '../utils'
 
 export const ERC20Select = observer(() => {
-  const { userMetamask } = useStores();
-  const [erc20, setERC20] = useState(userMetamask.erc20Address);
-  const [error, setError] = useState('');
-  const [token, setToken] = useState('');
-  const [custom, setCustom] = useState(false);
+  const { userMetamask, exchange } = useStores()
+  const [erc20, setERC20] = useState(userMetamask.erc20Address)
+  const [error, setError] = useState('')
+  const [token, setToken] = useState('')
+  const [custom, setCustom] = useState(false)
 
   useEffect(() => {
-    setERC20(userMetamask.erc20Address);
-    setToken(userMetamask.erc20Address);
-  }, [userMetamask.erc20Address]);
+    setERC20(userMetamask.erc20Address)
+    setToken(userMetamask.erc20Address)
+  }, [userMetamask.erc20Address])
 
   return (
-    <Box direction="column" margin={{ top: 'xlarge' }}>
-      <Box direction="row" align="center" justify="between">
-        <Text size="large" bold>
+    <Box direction='column' margin={{ top: 'xlarge' }}>
+      <Box direction='row' align='center' justify='between'>
+        <Text size='large' bold>
           ERC20 token address
         </Text>
 
         <Checkbox
-          label="use custom address"
+          label='use custom address'
           value={custom}
           onChange={setCustom}
         />
@@ -37,36 +36,36 @@ export const ERC20Select = observer(() => {
       {!custom ? (
         <Box margin={{ top: 'small', bottom: 'medium' }}>
           <Select
-            options={tokens.map(t => ({
+            options={exchange.tokens.map((t) => ({
               ...t,
-              text: t.label,
-              value: t.address,
+              text: t.name,
+              value: t.erc20Address
             }))}
             value={token}
-            onChange={async value => {
-              setToken(value);
+            onChange={async (value) => {
+              setToken(value)
 
-              setError('');
+              setError('')
               try {
-                await userMetamask.setToken(value);
+                await userMetamask.setToken(value)
               } catch (e) {
-                setError(e.message);
+                setError(e.message)
               }
             }}
-            placeholder="Select your ERC20 token"
+            placeholder='Select your ERC20 token'
           />
           {token ? (
             <Box
-              direction="row"
-              justify="between"
-              align="center"
+              direction='row'
+              justify='between'
+              align='center'
               margin={{ top: 'medium' }}
             >
               <Text>Address:</Text>
               <a
                 className={styles.addressLink}
                 href={`https://etherscan.io/token/${token}`}
-                target="_blank"
+                target='_blank'
               >
                 {truncateAddressString(token, 16)}
               </a>
@@ -77,19 +76,19 @@ export const ERC20Select = observer(() => {
         <div>
           <Box margin={{ top: 'xsmall', bottom: 'medium' }}>
             <TextInput
-              placeholder="Input ERC20 token address"
+              placeholder='Input ERC20 token address'
               value={erc20}
               onChange={setERC20}
             />
           </Box>
-          <Box direction="row" justify="end">
+          <Box direction='row' justify='end'>
             <Button
               onClick={async () => {
-                setError('');
+                setError('')
                 try {
-                  await userMetamask.setToken(erc20);
+                  await userMetamask.setToken(erc20)
                 } catch (e) {
-                  setError(e.message);
+                  setError(e.message)
                 }
               }}
             >
@@ -101,9 +100,9 @@ export const ERC20Select = observer(() => {
 
       {error ? (
         <Box>
-          <Text color="red">{error}</Text>
+          <Text color='red'>{error}</Text>
         </Box>
       ) : null}
     </Box>
-  );
-});
+  )
+})

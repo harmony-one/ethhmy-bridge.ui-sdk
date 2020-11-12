@@ -5,6 +5,7 @@ import { Provider as MobxProvider } from 'mobx-react'
 import { Grommet } from 'grommet'
 import { Theme, baseTheme } from './themes'
 import { useEffect, useState } from 'react'
+import { IToken } from './stores/Exchange'
 
 interface IExchangeProps {
   network: 'testnet' | 'mainnet'
@@ -12,6 +13,7 @@ interface IExchangeProps {
   addressOneWallet?: string
   addressMathWallet?: string
   theme?: typeof baseTheme
+  tokens?: IToken[]
 }
 
 export const ExchangeBlock = (props: IExchangeProps) => {
@@ -22,8 +24,16 @@ export const ExchangeBlock = (props: IExchangeProps) => {
       stores.user.setNetwork(props.network),
       stores.userMetamask.setNetwork(props.network),
       stores.exchange.setNetwork(props.network)
-    ]).then(() => setSdkInit(true))
+    ]).then(() => {
+      setSdkInit(true)
+    })
   }, [props.network])
+
+  useEffect(() => {
+    if (sdkInit) {
+      stores.exchange.setTokens(props.tokens)
+    }
+  }, [props.tokens, sdkInit])
 
   useEffect(() => {
     if (!sdkInit) return
@@ -77,3 +87,5 @@ export const ExchangeBlock = (props: IExchangeProps) => {
     </StoresProvider>
   )
 }
+
+export * from 'bridge-sdk'

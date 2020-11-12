@@ -2,6 +2,17 @@ import { StoreConstructor } from './core/StoreConstructor'
 import { action, computed, observable } from 'mobx'
 import { EXCHANGE_MODE, IOperation, STATUS, TOKEN } from './interfaces'
 
+import { tokensMainnet } from './tokensMainnet'
+import { tokensTestnet } from './tokensTestnet'
+
+import { ITokenInfo } from 'bridge-sdk'
+
+export type IToken = {
+  image: string
+  erc20Address: string
+  name: string
+}
+
 export type statusFetching =
   | 'init'
   | 'fetching'
@@ -63,6 +74,18 @@ export class Exchange extends StoreConstructor {
         }
       }
     }, 3000)
+  }
+
+  @observable tokens: IToken[] = []
+
+  @action.bound setTokens = (tokens?: IToken[]) => {
+    if (tokens) {
+      this.tokens = tokens
+
+      return
+    }
+
+    this.tokens = this.network === 'mainnet' ? tokensMainnet : tokensTestnet
   }
 
   @computed
