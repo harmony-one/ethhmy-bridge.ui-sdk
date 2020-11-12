@@ -19,9 +19,10 @@
     "@types/react": "file:../node_modules/@types/react",
     "@types/react-dom": "file:../node_modules/@types/react-dom",
     "bridge-ui-sdk": "file:..",
-    "react": "file:../node_modules/react",
-    "react-dom": "file:../node_modules/react-dom",
+    "react": "^16.0.1",
+    "react-dom": "^16.0.1",
     "react-scripts": "file:../node_modules/react-scripts",
+    "styled-components": "^5.2.1",
     "typescript": "file:../node_modules/typescript"
   },
   "devDependencies": {
